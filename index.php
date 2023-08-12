@@ -1,3 +1,9 @@
+<?php
+session_start();
+$page = isset($_GET['PAGE']) ? $_GET['PAGE'] : 'login';
+require('./routes/' . $page . '.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +15,10 @@
 </head>
 
 <body>
-    <?php echo '<p>Hello World</p>'; ?>
+<section>
+    <?php require("./view/$page.php"); ?>
+</section>
+
     <script src="https://cdn.tailwindcss.com"></script>
 </body>
 
