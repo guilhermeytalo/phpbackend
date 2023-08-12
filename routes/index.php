@@ -9,8 +9,8 @@ if(!empty($_GET["page"])){
     if (file_exists($file)) {
         include($file);
     } else {
-        include("$base_dir/404.php");
+        include("$base_dir/404Controller.php");
     }
 }else{
-    include("$base_dir/login.php");
+    include("$base_dir/loginController.php");
 }

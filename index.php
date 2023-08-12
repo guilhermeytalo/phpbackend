@@ -1,7 +1,18 @@
 <?php
 session_start();
-$page = isset($_GET['PAGE']) ? $_GET['PAGE'] : 'login';
-require('./routes/' . $page . '.php');
+
+$routes = include('./routes/routes.php');
+
+
+$request_uri = $_SERVER['REQUEST_URI'];
+
+
+$path = ltrim(parse_url($request_uri, PHP_URL_PATH), '/');
+
+
+$page = isset($routes[$path]) ? str_replace('.php', '', $routes[$path]) : 'login';
+
+require('./routes/index.php');
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +27,7 @@ require('./routes/' . $page . '.php');
 
 <body>
 <section>
-    <?php require("./view/$page.php"); ?>
+    <?php require("view/$page.php"); ?>
 </section>
 
     <script src="https://cdn.tailwindcss.com"></script>
