@@ -1,16 +1,27 @@
 <?php
-$title = '';
-$id = null;
 
-$base_dir = __DIR__.'/../controller/';
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
-if(!empty($_GET["page"])){
-    $file = "$base_dir/" . $_GET["page"] . "Controller.php";
-    if (file_exists($file)) {
-        include($file);
+$routes = [
+    '/' => 'controllers/login.php',
+    '/login' => 'controllers/login.php',
+    '/dashboard' => 'controllers/dashboard.php',
+];
+
+function routeToController($uri, $routes) {
+    if (array_key_exists($uri, $routes)) {
+        require $routes[$uri];
     } else {
-        include("$base_dir/404Controller.php");
+        abort();
     }
-}else{
-    include("$base_dir/loginController.php");
 }
+
+function abort($code = 404) {
+    http_response_code(404);
+
+    require "views/{$code}.view.php";
+
+    die();
+}
+
+routeToController($uri, $routes);
