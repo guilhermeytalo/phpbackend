@@ -8,29 +8,18 @@
 </head>
 
 <body>
-    <div class="flex justify-around text-center	items-center">
-        <div class="w-1/2">
-            <h1 class="text-4xl">Login</h1>
+    <div>
+        <div>
+            <form class="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+                <div class="mb-4">
+                    <input class="form-input mt-1 block w-full rounded-md border-2 border-solid border-gray-300" type="text" id="username" name="username" placeholder="Username">
+                </div>
+                <div class="mb-4">
+                    <input class="form-input mt-1 block w-full rounded-md border-2 border-solid border-gray-300" type="password" id="password" name="password" placeholder="Password">
+                </div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Sign In</button>
+            </form>
         </div>
-
-        <form class="w-1/2">
-
-            <div class="mb-2">
-                <label>
-                    Username
-                    <input class="border-2 rounded-full	" type="text" name="username" />
-                </label>
-            </div>
-
-            <div class="mb-2">
-                <label>
-                    Password
-                    <input class="border-2 ml-1 rounded-full	" type="password" name="password" />
-                </label>
-            </div>
-
-            <input type="submit" value="Logar" />
-        </form>
     </div>
 </body>
 
